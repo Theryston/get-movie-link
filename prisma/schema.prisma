@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./get_movie_link.db"
+}
+
+model error {
+  id        Int      @id @default(autoincrement())
+  message   String
+  type      String
+  util      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model movie {
+  id          String  @id @default(uuid())
+  title       String
+  tmdb_id     Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  videos      video[]
+}
+
+model video {
+  id          String  @id @default(uuid())
+  movie_id    String
+  url         String  @unique
+  audio_type  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  movie       movie @relation(fields: [movie_id], references: [id])
+}

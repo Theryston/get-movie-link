@@ -1,0 +1,22 @@
+{
+  "name": "get-movie-link",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/prestart.js && node index.js"
+  },
+  "keywords": [],
+  "author": "Theryston",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.5.0",
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
+    "loading-cli": "^1.1.0",
+    "puppeteer": "^19.2.2"
+  },
+  "devDependencies": {
+    "prisma": "^4.5.0"
+  }
+}
