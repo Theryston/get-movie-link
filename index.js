@@ -96,10 +96,11 @@ const main = async () => {
       }
       for (let j = 0; j < videos.length; j++) {
         loading.start(`Getting video ${videos[j].audioType} on movie page ${movie.title}...`);
+        let url;
         try {
           await page.goto(`https://openvideosource.xyz/playfile2.php/?code=${videos[j].code}&server=openvideo&type=movie`);
           await page.waitForSelector('video');
-          const url = await page.evaluate(() => {
+          url = await page.evaluate(() => {
             return document.querySelector('video').src;
           });
           const videoAlreadyExists = await prisma.video.findUnique({
